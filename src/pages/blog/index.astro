@@ -1,0 +1,10 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+const posts = (await getCollection('blog')).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+<Base title="Blog" description="Guides on getting paid as a freelancer.">
+  <h1>Blog</h1>
+  <ul>{posts.map((p) => <li><a href={`${base}/blog/${p.id}/`}>{p.data.title}</a></li>)}</ul>
+</Base>

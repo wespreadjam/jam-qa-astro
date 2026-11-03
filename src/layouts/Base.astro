@@ -1,0 +1,19 @@
+---
+const { title, description } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title} | Tallyhop</title>
+    <meta name="description" content={description} />
+    <style>body{font-family:system-ui,sans-serif;max-width:720px;margin:2rem auto;padding:0 1rem;line-height:1.6}nav a{margin-right:1rem}</style>
+  </head>
+  <body>
+    <nav><a href={`${base}/`}>Tallyhop</a><a href={`${base}/features/`}>Features</a><a href={`${base}/pricing/`}>Pricing</a><a href={`${base}/blog/`}>Blog</a></nav>
+    <main><slot /></main>
+    <footer><p>&copy; 2026 Tallyhop Software Ltd. Fictional company used for testing.</p></footer>
+  </body>
+</html>
